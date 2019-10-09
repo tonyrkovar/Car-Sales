@@ -15,7 +15,7 @@ const initialState = {
     ]
 };
 
-export const storeReducer = (state = initialState, action) => {
+export const storeReducers = (state = initialState, action) => {
     console.log(action, state)
     switch (action.type) {
         default:
