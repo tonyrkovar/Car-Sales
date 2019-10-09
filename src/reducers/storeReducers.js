@@ -1,4 +1,4 @@
-import { ADD_FEATURE } from '../actions'
+import { ADD_FEATURE } from '../actions/index'
 
 const initialState = {
     additionalPrice: 0,
@@ -21,15 +21,14 @@ export const storeReducers = (state = initialState, action) => {
     console.log('this is in reducer', action, state)
     switch (action.type) {
         case ADD_FEATURE:
+            console.log('fart')
             return {
                 ...state,
+                additionalPrice: state.additionalPrice + action.payload.price,
                 car: {
                     ...state.car,
-                    features: [
-                        ...state.additionalFeatures,
-                        // name: action.payload
-                    ]
-                },
+                    features: [...state.car.features, action.payload]
+                }
             }
         default:
             return state;
