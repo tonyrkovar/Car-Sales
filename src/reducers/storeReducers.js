@@ -1,5 +1,6 @@
 import { ADD_FEATURE, REMOVE_FEATURE } from '../actions/index'
 
+
 const initialState = {
     additionalPrice: 0,
     car: {
@@ -18,10 +19,11 @@ const initialState = {
 };
 
 export const storeReducers = (state = initialState, action) => {
-    console.log('this is in reducer', action, state)
+    // console.log('this is in reducer', action, state)
     switch (action.type) {
         case ADD_FEATURE:
             console.log('fart')
+
             return {
                 ...state,
                 additionalPrice: state.additionalPrice + action.payload.price,
@@ -33,6 +35,8 @@ export const storeReducers = (state = initialState, action) => {
                     return !(feature.id === action.payload.id)
                 })]
             }
+
+            break;
         case REMOVE_FEATURE:
             console.log('REMOVE_FEATURE FIRES')
             return {
@@ -46,6 +50,7 @@ export const storeReducers = (state = initialState, action) => {
                 },
                 additionalFeatures: [...state.additionalFeatures, action.payload]
             }
+            break
         default:
             return state;
     }
