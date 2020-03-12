@@ -1,7 +1,12 @@
 import React from 'react';
 import AdditionalFeature from './AdditionalFeature';
+import { connect } from 'react-redux';
+
+import { addFeature } from '../actions/shopActions'
 
 const AdditionalFeatures = props => {
+  console.log('props in Additional Features', props)
+  console.log(addFeature)
   return (
     <div className="content">
       <h4>Additional Features</h4>
@@ -12,10 +17,19 @@ const AdditionalFeatures = props => {
           ))}
         </ol>
       ) : (
-        <p>Nice looking car!</p>
-      )}
+          <p>Nice looking car!</p>
+        )}
     </div>
   );
 };
 
-export default AdditionalFeatures;
+const mapStateToProps = state => {
+  return {
+    store: state.additionalFeatures
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  { addFeature }
+)(AdditionalFeatures);
